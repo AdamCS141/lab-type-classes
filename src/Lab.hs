@@ -33,10 +33,10 @@ class Semigroup a where
 -- standard library uses a trick to work around the above limitation which
 -- we will be able to understand further into the module.
 instance Semigroup Int where 
-    (<>) = undefined 
+    (<>) = (+)
 
 instance Semigroup [a] where 
-    (<>) = undefined 
+    (<>) = (++) 
 
 --------------------------------------------------------------------------------
 -- Monoids
@@ -50,10 +50,10 @@ class Semigroup a => Monoid a where
     mempty :: a
 
 instance Monoid Int where
-    mempty  = undefined
+    mempty  = 0
 
 instance Monoid [a] where
-    mempty  = undefined
+    mempty  = []
 
 -- | `mconcat` @xs@ combines all the elements in @xs@ using the `(<>)` operator
 -- from the `Semigroup` instance for the type of elements in @xs@.
